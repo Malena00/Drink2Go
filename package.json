@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": "^18.18 || ^20.9"
+    "node": "^18.18 || ^20.9 || ^22.14"
   },
   "browserslist": [
     "last 2 versions",

@@ -2,16 +2,93 @@
 <html class="page" lang="ru">
   <head>
     <meta charset="UTF-8">
-    <title>Название проекта</title>
+    <title>Интернет-магазин кофейных напитков Drink2Go</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="preload" href="#" type="font/woff2" as="font">
+    <link rel="icon" href="favicon.ico">
+    <link rel="icon" href="images/favicons/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="images/favicons/180.png">
+    <link rel="manifest" href="manifest.webmanifest">
     <link rel="stylesheet" href="styles/styles.css">
-    <script src="scripts/index.js" defer></script>
+    <link rel="preload" href="fonts/montserrat-400.woff2" as="font" type="font/woff2">
+    <link rel="preload" href="fonts/montserrat-500.woff2" as="font" type="font/woff2">
+    <link rel="preload" href="fonts/montserrat-600.woff2" as="font" type="font/woff2">
+    <link rel="preload" href="fonts/montserrat-700.woff2" as="font" type="font/woff2">
   </head>
   <body class="page__body">
-    <header class="header">Шапка</header>
-    <main>
-      <h1>Страница для старта</h1>
+    <header class="header">
+      <div class="container">
+        <div class="header__wrapper">
+          <a href="#" class="header__logo">
+            <picture>
+              <source srcset="images/logo-desktop.svg" type="image/svg+xml" width="170" height="36" media="(min-width: 1440px)">
+              <source srcset="images/logo-tablet.svg" type="image/svg+xml" width="82" height="36" media="(min-width: 768px)">
+              <img class="header__logo-image" src="images/logo-mobile.svg" width="32" height="36" alt="Логотип интернет-магазина Drink2Go">
+            </picture>
+          </a>
+          <h1 class="header__title">Интернет-магазин кофейных напитков</h1>
+          <nav class="header__navigation">
+            <div class="header__menu-dropdown">
+              <button type="button" class="header__menu-button js-button-toggle">
+                <svg class="header__menu-button-icon header__menu-button-icon--open" width="16" height="16" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                  <use href="icons/stack.svg#menu"/>
+                </svg>
+                <svg class="header__menu-button-icon header__menu-button-icon--close" width="16" height="16" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                  <use href="icons/stack.svg#close"/>
+                </svg>
+              </button>
+              <ul class="header__menu-list">
+                <li class="header__menu-item">
+                  <a href="#" class="header__menu-link header__menu-link--active">Главная</a>
+                </li>
+                <li class="header__menu-item">
+                  <a href="#" class="header__menu-link">Каталог</a>
+                </li>
+                <li class="header__menu-item">
+                  <a href="#" class="header__menu-link">Доставка</a>
+                </li>
+                <li class="header__menu-item">
+                  <a href="#" class="header__menu-link">О нас</a>
+                </li>
+              </ul>
+            </div>
+            <ul class="header__menu-list header__menu-user">
+              <li class="header__menu-item">
+                <a href="#" class="header__menu-link">
+                  <svg class="header__menu-icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                    <use href="icons/stack.svg#user"/>
+                  </svg>
+                  <span class="header__menu-text">Войти</span>
+                </a>
+              </li>
+              <li class="header__menu-item">
+                <a href="#" class="header__menu-link">
+                  <svg class="header__menu-icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                    <use href="icons/stack.svg#cart"/>
+                  </svg>
+                  <span class="header__menu-text">Корзина</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main class="page__main">
+      <section class="hero"></section>
+        <ul class="hero__slider-list">
+          <li class="hero__slider-item active flat-white">
+            <div class="container">
+              <div class="hero__slider-wrapper">
+                <div class="hero__picture">
+                  <picture>
+                    <source srcset="images/flat-white-img--desc@1x.webp 1x, images/flat-white-img--desc@2x.webp 2x" type="image/webp">
+                  </picture>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
     </main>
+    <script src="scripts/index.js" defer></script>
   </body>
 </html>
