@@ -1,4 +1,4 @@
-import { readFileSync, rmSync } from 'node:fs';
+import { readFileSync, rmSync, writeFileSync } from 'node:fs';
 
 import gulp from 'gulp';
 import htmlmin from 'gulp-htmlmin';
@@ -129,6 +129,7 @@ export function createStack () {
 }
 
 export function copyStatic () {
+  writeFileSync(`${PATH_TO_DIST}.nojekyll`, '');
   return src(PATHS_TO_STATIC, { base: PATH_TO_SOURCE })
     .pipe(dest(PATH_TO_DIST));
 }
