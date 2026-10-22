@@ -1,0 +1,1 @@
+var n=document.querySelector(".header__menu-button"),o=document.querySelector(".header__menu-dropdown"),t=()=>{o.classList.toggle("header__menu-dropdown--opened")},e=()=>{n.addEventListener("click",t)};e();
