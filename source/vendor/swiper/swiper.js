@@ -1,19 +1,13 @@
 import Swiper from 'swiper';
-import 'swiper/swiper-bundle.css';
 import { Navigation, Pagination } from 'swiper/modules';
-
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 const swiper = new Swiper('.swiper', {
   modules: [Navigation, Pagination],
 
   // Optional parameters
-  loop: true,
+  rewind: 3,
   direction: 'horizontal',
   slidesPerView: 1,
-  centeredSlides: true,
   // If we need pagination
   pagination: {
     el: '.swiper-pagination',
@@ -22,8 +16,8 @@ const swiper = new Swiper('.swiper', {
 
   // Navigation arrows
   navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+    nextEl: '.hero__slider-toggle--next',
+    prevEl: '.hero__slider-toggle--prev',
   },
 });
 

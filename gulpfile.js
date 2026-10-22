@@ -1,4 +1,4 @@
-import { readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { readFileSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
 
 import gulp from 'gulp';
 import htmlmin from 'gulp-htmlmin';
@@ -50,6 +50,13 @@ export function processStyles () {
       postUrl([
         {
           filter: '**/*',
+          url: (asset) => {
+            if (/\.(woff2?|ttf|otf)(\?.*)?$/i.test(asset.url)) {
+              return asset.url;
+            }
+
+            return asset.url;
+          },
           assetsPath: '../',
         },
         {
@@ -83,6 +90,9 @@ export function processScripts () {
       minify: !isDevelopment,
       sourcemap: isDevelopment,
       target: browserslistToEsbuild(),
+      loader: {
+        '.png': 'file',
+      },
     }))
     .pipe(dest(`${PATH_TO_DIST}scripts`))
     .pipe(server.stream());
@@ -129,6 +139,7 @@ export function createStack () {
 }
 
 export function copyStatic () {
+  mkdirSync('build', { recursive: true });
   writeFileSync(`${PATH_TO_DIST}.nojekyll`, '');
   return src(PATHS_TO_STATIC, { base: PATH_TO_SOURCE })
     .pipe(dest(PATH_TO_DIST));
@@ -201,6 +212,7 @@ export function runDev (done) {
       processStyles,
       processScripts,
       createStack,
+      copyStatic,
     ),
     startServer,
   )(done);
