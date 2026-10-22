@@ -1,0 +1,32 @@
+.swiper-pagination-bullet {
+  width: 62px;
+  height: 24px;
+  padding: 10px 0;
+  border: none;
+  background: none;
+  background-color: $color-base-white;
+  background-clip: content-box;
+  cursor: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus,
+  &:hover {
+    background-color: $color-primary-opacity;
+  }
+
+  &:active {
+    background-color: $color-base-primary;
+  }
+
+  &:disabled {
+    background-color: $color-light-grey;
+  }
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $color-base-primary;
+}
+

@@ -1,0 +1,127 @@
+.price-input {
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-between;
+}
+
+.price-input .field {
+  display: flex;
+}
+
+.field span, .field input {
+  font-size: 16px;
+}
+
+.field input {
+  width: 118px;
+  padding: 8px 10px;
+
+  border: 2px solid $color-primary-lighter;
+  border-radius: 4px;
+  background-color: $color-base-white;
+
+  font: 500 16px/24px $font-primary;
+  text-align: center;
+
+  appearance: textfield;
+  -moz-appearance: textfield;
+
+   @media #{$not-mobile} {
+    width: 88px;
+  }
+
+  @media #{$desktop-only} {
+    width: 134px;
+  }
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  &::placeholder {
+    color: $color-base-grey;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus,
+  &:hover {
+    border-color: $color-primary-darker;
+  }
+
+  &:disabled {
+    border: 2px solid $color-light-grey;
+    color: $color-base-grey;
+    background: $color-lightest-grey;
+  }
+
+
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.slider {
+  height: 2px;
+  position: relative;
+
+  background: $color-light-grey;
+  border-radius: 2px;
+}
+
+.slider .progress {
+  height: 100%;
+
+  left: 0%;
+  right: 10%;
+
+  position: absolute;
+  border-radius: 2px;
+  background: $color-primary-lighter;
+}
+
+.range-input {
+  position: relative;
+}
+
+.range-input input {
+  position: absolute;
+  width: 100%;
+  height: 5px;
+
+  top: -5px;
+  left: -2px;
+
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  height: 24px;
+  width: 24px;
+
+  border: 2px solid $color-primary-lighter;
+  border-radius: 50%;
+  background: $color-base-white;
+  pointer-events: auto;
+  -webkit-appearance: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 24px;
+  width: 24px;
+
+  border: 2px solid $color-primary-lighter;
+  border-radius: 50%;
+  background: $color-base-white;
+  pointer-events: auto;
+  -moz-appearance: none;
+}

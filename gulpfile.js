@@ -1,7 +1,6 @@
 import { readFileSync, rmSync } from 'node:fs';
 
 import gulp from 'gulp';
-import plumber from 'gulp-plumber';
 import htmlmin from 'gulp-htmlmin';
 import * as dartSass from 'sass';
 import gulpSass from 'gulp-sass';
@@ -46,7 +45,6 @@ export function lintBem () {
 
 export function processStyles () {
   return src(`${PATH_TO_SOURCE}styles/*.scss`, { sourcemaps: isDevelopment })
-    .pipe(plumber())
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss([
       postUrl([

@@ -57,5 +57,9 @@
   },
   "overrides": {
     "es5-ext": "0.10.53"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "swiper": "^11.2.8"
   }
 }
