@@ -1,4 +1,8 @@
 {
+  "name": "Drink2Go",
+  "short_name": "Drink2Go",
+  "start_url": "./",
+  "display": "standalone",
   "icons": [
     { "src": "favicons/180.png", "type": "image/png", "sizes": "180x180" },
     { "src": "favicons/192.png", "type": "image/png", "sizes": "192x192" },
