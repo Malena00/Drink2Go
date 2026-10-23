@@ -68,11 +68,13 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .slider {
-  height: 2px;
   position: relative;
+  height: 2px;
+  width: 100%;
 
   background: $color-light-grey;
   border-radius: 2px;
+  overflow: hidden;
 }
 
 .slider .progress {
@@ -96,7 +98,7 @@ input[type="number"]::-webkit-inner-spin-button {
   height: 5px;
 
   top: -5px;
-  left: -2px;
+  left: 0;
 
   background: none;
   pointer-events: none;

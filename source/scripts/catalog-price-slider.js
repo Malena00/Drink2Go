@@ -16,13 +16,28 @@ function initRangeInput(
 
   const range = component.querySelector(rangeSelector);
 
+  // Новая функция для обновления линии прогресса
+  const updateProgress = () => {
+    const minValue = parseInt(sliderLeft.value, 10);
+    const maxValue = parseInt(sliderRight.value, 10);
+
+    const minPercent = (minValue / sliderLeft.max) * 100;
+    const maxPercent = (maxValue / sliderRight.max) * 100;
+
+    // Устанавливаем чистые проценты без всяких calc()
+    range.style.left = `${minPercent}%`;
+    range.style.right = `${100 - maxPercent}%`;
+  };
+
+  // --- Обработчики ---
+
   textLeft.addEventListener('input', () => {
     const minValue = parseInt(textLeft.value, 10);
     const maxValue = parseInt(textRight.value, 10);
 
     if (maxValue - minValue >= priceGap && maxValue <= sliderRight.max) {
       sliderLeft.value = minValue;
-      range.style.left = `${(minValue / sliderLeft.max) * 100 }%`;
+      updateProgress(); // Вызываем нашу функцию
     }
   });
 
@@ -32,7 +47,7 @@ function initRangeInput(
 
     if (maxValue - minValue >= priceGap && maxValue <= sliderRight.max) {
       sliderRight.value = maxValue;
-      range.style.right = `${100 - (maxValue / sliderRight.max) * 100 }%`;
+      updateProgress(); // Вызываем нашу функцию
     }
   });
 
@@ -45,8 +60,7 @@ function initRangeInput(
     } else {
       textLeft.value = minValue;
       textRight.value = maxValue;
-      range.style.left = `${(minValue / sliderLeft.max) * 100 }%`;
-      range.style.right = `${100 - (maxValue / sliderRight.max) * 100 }%`;
+      updateProgress(); // Вызываем нашу функцию
     }
   });
 
@@ -59,10 +73,12 @@ function initRangeInput(
     } else {
       textLeft.value = minValue;
       textRight.value = maxValue;
-      range.style.left = `${(minValue / sliderLeft.max) * 100 }%`;
-      range.style.right = `${100 - (maxValue / sliderRight.max) * 100 }%`;
+      updateProgress(); // Вызываем нашу функцию
     }
   });
+
+  // Желательно вызвать один раз при инициализации, чтобы линия встала на место
+  updateProgress();
 }
 
 export default initRangeInput;
