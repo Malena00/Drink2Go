@@ -2,12 +2,17 @@ const initHeaderDropdown = () => {
   const toggleElement = document.querySelector('.header__menu-button');
   const menuElement = document.querySelector('.header__menu-dropdown');
 
-  // Если меню нет на странице, прерываем выполнение
   if (!menuElement || !toggleElement) {
     return;
   }
 
-  // 1. Логика открытия/закрытия бургера
+  // ЗАЩИТА: Если обработчик уже навешен, второй раз не навешиваем
+  if (toggleElement.dataset.listenerAttached === 'true') {
+    return;
+  }
+  toggleElement.dataset.listenerAttached = 'true';
+
+  // 1. Открытие/закрытие бургера
   toggleElement.addEventListener('click', () => {
     menuElement.classList.toggle('header__menu-dropdown--opened');
   });
@@ -25,41 +30,56 @@ const initHeaderDropdown = () => {
       return;
     }
 
+    if (window.innerWidth < 768) {
+      return;
+    }
+
     const left = el.offsetLeft;
     const width = el.offsetWidth;
-
-    // ИСПРАВЛЕНО: используем .style вместо computedStyleMap
     menuList.style.setProperty('--line-left', `${left}px`);
     menuList.style.setProperty('--line-width', `${width}px`);
   };
 
   links.forEach((link) => {
     link.addEventListener('click', function (e) {
-      e.preventDefault();
+      const href = this.getAttribute('href');
 
+      // Логика якорей (плавный скролл)
+      if (href && href.startsWith('#')) {
+        if (href === '#') {
+          e.preventDefault();
+        } else {
+          e.preventDefault();
+          const targetElement = document.querySelector(href);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
+
+      // Переключение активного класса
       links.forEach((l) => l.classList.remove('header__menu-link--active'));
-
       this.classList.add('header__menu-link--active');
       moveLine(this);
+
+      // Закрываем мобильное меню после клика по ссылке
+      menuElement.classList.remove('header__menu-dropdown--opened');
     });
   });
 
-  // Устанавливаем линию на активный пункт при загрузке страницы
+  // Установка линии при загрузке
   const activeLink = menuList.querySelector('.header__menu-link--active');
-
-  // Ждем загрузки шрифтов, чтобы ширина текста посчиталась правильно
   document.fonts.ready.then(() => {
     moveLine(activeLink);
   });
 
-  // Пересчитываем позицию при ресайзе окна
+  // Пересчет линии при ресайзе
   window.addEventListener('resize', () => {
     const currentActive = menuList.querySelector('.header__menu-link--active');
     moveLine(currentActive);
   });
 };
 
-// Вызываем функцию при загрузке DOM
 document.addEventListener('DOMContentLoaded', () => {
   initHeaderDropdown();
 });

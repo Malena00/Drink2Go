@@ -135,12 +135,15 @@
 
 .header__menu-link {
   display: flex;
+  position: relative;
+  z-index: 1;
   padding: 22px;
   color: $color-base-black;
   font: 500 12px/16px $font-primary;
   letter-spacing: 0.24px;
   text-transform: uppercase;
   text-decoration: none;
+  transition: color 0.2s ease;
 
   @media #{$not-mobile} {
     padding: 32px 22px;
@@ -169,11 +172,26 @@
   border-bottom: none;
 
   &:active {
-    background-color: $color-base-secondary;
-    color: $color-base-black;
+    background-color: rgba($color-base-secondary, 0.1) ;
+    color: $color-base-primary;
 
     @media #{$not-mobile} {
       color: $color-base-primary;
+    }
+  }
+
+  @media (hover:hover) {
+    &:hover {
+      color: $color-base-primary;
+    }
+  }
+
+  &--active {
+    color: $color-base-primary;
+
+    @media #{mobile-only} {
+      border-left: 3px solid $color-base-primary;
+      background-color: rgba($color-base-primary, 0.05) , ;
     }
   }
 }
