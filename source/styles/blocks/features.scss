@@ -68,6 +68,22 @@
     text-align: center;
     background-position: top center;
   }
+
+  &--speed {
+    background-image: url("../../icons/stack.svg#speed");
+  }
+
+  &--fit {
+    background-image: url("../../icons/stack.svg#fit");
+  }
+
+  &--energy {
+    background-image: url("../../icons/stack.svg#energy");
+  }
+
+  &--ecology {
+    background-image: url("../../icons/stack.svg#ecology");
+  }
 }
 
 .features__title {
