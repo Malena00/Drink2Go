@@ -3,7 +3,7 @@ import 'leaflet/dist/leaflet.css';
 
 function initMap() {
   const mapClass = document.querySelector('.map');
-  const coordinates = [57.1530, 65.5230];
+  const coordinates = [59.9684, 30.3174];
   const map = new L.map(mapClass, {
     center: coordinates,
     zoom: 20,
@@ -23,7 +23,7 @@ function initMap() {
   const markerOptions = {
     title: 'Location',
     clickable: true,
-    draggable: true,
+    draggable: false,
     icon: customIcon,
   };
 
